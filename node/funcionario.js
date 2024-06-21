@@ -12,10 +12,6 @@ var funcionario = banco.conexao.define(
         nome: {
             type: sequelize.STRING,
             allowNull: false
-        },
-        idade: {
-            type: sequelize.INTEGER.UNSIGNED,
-            allowNull: false
         }
     },
 {timestamps:false}
