@@ -1,7 +1,7 @@
 const express = require('express')
 const banco = require("./banco")
 const projeto = require("./projeto")
-const funcionario = require("./professor")
+const funcionario = require("./funcionario")
 
 const app = express()
 app.use(express.json())
@@ -55,8 +55,9 @@ app.get("/projeto/:id",async function(req, res) {
 //Questão 3 - pegando o subconjunto de nomes dos funcionários
 app.get("/funcionario/nome/:nome",async function(req, res) {
     const funcionarioSelecionado = await funcionario.funcionario.findAll(
-        req.params.nome,
-        { include: { model: projeto.projeto } } 
+
+        { include: { model: projeto.projeto },
+        where:{ nome:req.params.nome }  }
     )
     if( funcionarioSelecionado == null ){
         res.status(404).send({})
