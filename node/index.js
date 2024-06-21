@@ -58,3 +58,61 @@ app.post("/funcionario/",async function(req,res){
     res.send(resultado)
 })
 
+app.post("/projetos/",async function(req,res){
+    const resultado = await projetos.projeto.create({
+        nome:req.body.nome,
+        funcionarioId:req.body.funcionarioId
+    })
+    res.send(resultado)
+})
+
+app.put("/funcionario/:id",async function(req,res){
+    const resultado = await funcionario.funcionario.update({
+        nome:req.body.nome
+    },{
+        where:{id: req.params.id}
+    })
+    if( resultado == 0){
+        res.status(404).send({})
+    }else{
+        res.send( await funcionario.funcionario.findByPk(req.params.id))
+    }
+})
+
+app.put("/projetos/",async function(req,res){
+    const resultado = await projetos.projeto.update({
+        nome:req.body.nome,
+        professorId:req.body.professorId
+    })
+    if( resultado == 0){
+        res.status(404).send({})
+    }else{
+        res.send( await materia.materia.findByPk(req.params.id))
+    }
+})
+
+app.delete("/professor/:id",async function(req,res){
+    const resultado = await professor.professor.destroy({
+        where:{
+            id:req.params.id
+        }
+    })
+    if( resultado == 0 ){
+        res.status(404).send({})
+    }else{
+        res.status(204).send({})
+    }
+})
+
+app.delete("/materia/:id",async function(req,res){
+    const resultado = await materia.materia.destroy({
+        where:{
+            id:req.params.id
+        }
+    })
+    if( resultado == 0 ){
+        res.status(404).send({})
+    }else{
+        res.status(204).send({})
+    }
+})
