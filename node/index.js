@@ -1,7 +1,7 @@
 const express = require('express')
 const banco = require("./banco")
-const projeto = require("./projeto")
-const funcionario = require("./funcionario")
+const projetos = require("./projetos")
+const funcionarios = require("./funcionarios")
 
 const app = express()
 app.use(express.json())
@@ -17,21 +17,21 @@ banco.conexao.sync(function () {
 })
 
 //Questão 1 - pegar todos os funcionários
-app.get("/funcionario/", async function (req, res) {
-    const resultado = await funcionario.funcionario.findAll()
+app.get("/funcionarios/", async function (req, res) {
+    const resultado = await funcionarios.funcionarios.findAll()
     res.send(resultado);
 })
 
 //pegar todos os projetos
-app.get("/projeto/", async function (req, res) {
-    const resultado = await projeto.projeto.findAll()
+app.get("/projetos/", async function (req, res) {
+    const resultado = await projetos.projetos.findAll()
     res.send(resultado);
 })
 
 //Questão 2 - pegando funcionário pelo id
-app.get("/funcionario/:id", async function (req, res) {
-    const funcionarioSelecionado = await funcionario.funcionario.findByPk(req.params.id,
-        { include: { model: projeto.projeto } }
+app.get("/funcionarios/:id", async function (req, res) {
+    const funcionarioSelecionado = await funcionarios.funcionarios.findByPk(req.params.id,
+        { include: { model: projetos.projetos } }
     )
     if (funcionarioSelecionado == null) {
         res.status(404).send({})
@@ -41,9 +41,9 @@ app.get("/funcionario/:id", async function (req, res) {
 })
 
 //pegando o projeto pelo id
-app.get("/projeto/:id", async function (req, res) {
-    const projetoSelecionada = await projeto.projeto.findByPk(req.params.id,
-        { include: { model: funcionario.funcionario } }
+app.get("/projetos/:id", async function (req, res) {
+    const projetoSelecionada = await projetos.projetos.findByPk(req.params.id,
+        { include: { model: funcionarios.funcionarios } }
     )
     if (projetoSelecionada == null) {
         res.status(404).send({})
@@ -53,10 +53,10 @@ app.get("/projeto/:id", async function (req, res) {
 })
 
 //Questão 3 - pegando o subconjunto de nomes dos funcionários
-app.get("/funcionario/nome/:nome", async function (req, res) {
-    const funcionarioSelecionado = await funcionario.funcionario.findAll(
+app.get("/funcionarios/nome/:nome", async function (req, res) {
+    const funcionarioSelecionado = await funcionarios.funcionarios.findAll(
         {
-            include: { model: projeto.projeto },
+            include: { model: projetos.projetos },
             where: { nome: req.params.nome }
         }
     )
@@ -68,9 +68,9 @@ app.get("/funcionario/nome/:nome", async function (req, res) {
 })
 
 //pegando o subconjunto de nomes dos projetos
-app.get("/projeto/nome/:nome", async function (req, res) {
-    const projetoSelecionada = await projeto.projeto.findByPk(req.params.nome,
-        { include: { model: funcionario.funcionario } }
+app.get("/projetos/nome/:nome", async function (req, res) {
+    const projetoSelecionada = await projetos.projetos.findByPk(req.params.nome,
+        { include: { model: funcionarios.funcionarios } }
     )
     if (projetoSelecionada == null) {
         res.status(404).send({})
@@ -80,8 +80,8 @@ app.get("/projeto/nome/:nome", async function (req, res) {
 })
 
 //Questão 4 - adicionando nome ao funcionario
-app.post("/funcionario/", async function (req, res) {
-    const resultado = await funcionario.funcionario.create({
+app.post("/funcionarios/", async function (req, res) {
+    const resultado = await funcionarios.funcionarios.create({
         nome: req.body.nome,
         idade: req.body.idade,
         cpf:req.body.cpf,
@@ -91,8 +91,8 @@ app.post("/funcionario/", async function (req, res) {
 })
 
 //adicionando nome do projeto
-app.post("/projeto/", async function (req, res) {
-    const resultado = await projeto.projeto.create({
+app.post("/projetos/", async function (req, res) {
+    const resultado = await projetos.projetos.create({
         nome: req.body.nome,
         data:req.body.data,
         descricao:req.body.descricao,
@@ -104,8 +104,8 @@ app.post("/projeto/", async function (req, res) {
 })
 
 //Questão 5 - Editando um funcionário expecífico
-app.put("/funcionario/:id", async function (req, res) {
-    const resultado = await funcionario.funcionario.update({
+app.put("/funcionarios/:id", async function (req, res) {
+    const resultado = await funcionarios.funcionarios.update({
         nome: req.body.nome,
         idade: req.body.idade,
         cpf:req.body.cpf,
@@ -116,13 +116,13 @@ app.put("/funcionario/:id", async function (req, res) {
     if (resultado == 0) {
         res.status(404).send({})
     } else {
-        res.send(await funcionario.funcionario.findByPk(req.params.id))
+        res.send(await funcionarios.funcionarios.findByPk(req.params.id))
     }
 })
 
 //Editando um projeto específico
-app.put("/projeto/:id", async function (req, res) {
-    const resultado = await projeto.projeto.update({
+app.put("/projetos/:id", async function (req, res) {
+    const resultado = await projetos.projetos.update({
         nome: req.body.nome,
         data:req.body.data,
         descricao:req.body.descricao,
@@ -132,13 +132,13 @@ app.put("/projeto/:id", async function (req, res) {
     if (resultado == 0) {
         res.status(404).send({})
     } else {
-        res.send(await projeto.projeto.findByPk(req.params.id))
+        res.send(await projetos.projetos.findByPk(req.params.id))
     }
 })
 
 //Questão 6 - Excluindo um funcionário
-app.delete("/funcionario/:id", async function (req, res) {
-    const resultado = await funcionario.funcionario.destroy({
+app.delete("/funcionarios/:id", async function (req, res) {
+    const resultado = await funcionarios.funcionarios.destroy({
         where: {
             id: req.params.id,
             
@@ -152,8 +152,8 @@ app.delete("/funcionario/:id", async function (req, res) {
 })
 
 //Excluindo um projeto
-app.delete("/projeto/:id", async function (req, res) {
-    const resultado = await projeto.projeto.destroy({
+app.delete("/projetos/:id", async function (req, res) {
+    const resultado = await projetos.projetos.destroy({
         where: {
             id: req.params.id
         }

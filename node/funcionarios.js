@@ -1,8 +1,8 @@
 const sequelize = require('sequelize')
 const banco = require("./banco")
 
-var projeto = banco.conexao.define(
-    "projeto",
+var funcionarios = banco.conexao.define(
+    "funcionarios",
     {
         id: {
             type: sequelize.INTEGER.UNSIGNED,
@@ -13,19 +13,20 @@ var projeto = banco.conexao.define(
             type: sequelize.STRING,
             allowNull: false
         },
-        data: {
-            type: sequelize.DATE,
+
+        idade: {
+            type: sequelize.INTEGER,
             allowNull: false
         },
-        descricao: {
-            type: sequelize.TEXT,
+        cpf: {
+            type: sequelize.STRING,
             allowNull: false
         },
-        custo_projeto: {
-            type: sequelize.DOUBLE,
+        email: {
+            type: sequelize.STRING,
             allowNull: false
         }
     },
     { timestamps: false }
 )
-module.exports = { projeto }//deixar puplico
+module.exports = { funcionarios }//deixar puplico
