@@ -12,8 +12,20 @@ var projeto = banco.conexao.define(
         nome: {
             type: sequelize.STRING,
             allowNull: false
+        },
+        data: {
+            type: sequelize.DATE,
+            allowNull: false
+        },
+        descricao: {
+            type: sequelize.TEXT,
+            allowNull: false
+        },
+        custo_projeto: {
+            type: sequelize.DOUBLE,
+            allowNull: false
         }
     },
-{timestamps:false}
+    { timestamps: false }
 )
-module.exports={projeto}//deixar puplico
+module.exports = { projeto }//deixar puplico

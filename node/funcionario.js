@@ -12,8 +12,21 @@ var funcionario = banco.conexao.define(
         nome: {
             type: sequelize.STRING,
             allowNull: false
+        },
+
+        idade: {
+            type: sequelize.INTEGER,
+            allowNull: false
+        },
+        cpf: {
+            type: sequelize.STRING,
+            allowNull: false
+        },
+        email: {
+            type: sequelize.STRING,
+            allowNull: false
         }
     },
-{timestamps:false}
+    { timestamps: false }
 )
-module.exports={funcionario}//deixar puplico
+module.exports = { funcionario }//deixar puplico
