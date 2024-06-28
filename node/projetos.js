@@ -14,7 +14,7 @@ var projetos = banco.conexao.define(
             allowNull: false
         },
         data: {
-            type: sequelize.DATE,
+            type: sequelize.DATEONLY,
             allowNull: false
         },
         descricao: {

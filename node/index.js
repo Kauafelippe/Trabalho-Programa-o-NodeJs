@@ -128,6 +128,8 @@ app.put("/projetos/:id", async function (req, res) {
         descricao:req.body.descricao,
         custo_projeto:req.body.custo_projeto,
         funcionarioId: req.body.funcionarioId
+    }, {
+        where: { id: req.params.id }
     })
     if (resultado == 0) {
         res.status(404).send({})
@@ -141,7 +143,6 @@ app.delete("/funcionarios/:id", async function (req, res) {
     const resultado = await funcionarios.funcionarios.destroy({
         where: {
             id: req.params.id,
-            
         }
     })
     if (resultado == 0) {

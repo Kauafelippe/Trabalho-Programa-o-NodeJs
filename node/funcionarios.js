@@ -1,5 +1,6 @@
 const sequelize = require('sequelize')
 const banco = require("./banco")
+const projetos = require('./projetos')
 
 var funcionarios = banco.conexao.define(
     "funcionarios",
@@ -29,4 +30,7 @@ var funcionarios = banco.conexao.define(
     },
     { timestamps: false }
 )
+funcionarios.hasMany(projetos.projetos)
+projetos.projetos.belongsTo( funcionarios )
+
 module.exports = { funcionarios }//deixar puplico
