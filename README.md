@@ -41,7 +41,7 @@ e a chave estarangeira de projeto, já que projeto pertence ao funcionarios e um
 
 ![Captura de tela 2024-07-04 091650](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/90571f7f-f841-4894-86cf-9873a12effc2)
 
-- Para testar o método get com filtro pesquisando por nome de um projeto e funcionario:
+- Para testar o método get com filtro pesquisando por um sbconjunto nesse caso nome de um projeto e funcionario:
 ![Captura de tela 2024-07-04 092816](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/2d86bb75-3e66-42e9-9239-92b7078d8dd2)
 
 ![Captura de tela 2024-07-04 093051](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/7824e0aa-b115-41f5-8c35-2c1f681bfa9f)
