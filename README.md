@@ -27,4 +27,4 @@ cpf: String;
 
 email: String;
 
-e a chave estarangeira de produto, já que produto pertence ao funcionarios e um funcionario pode ter muitos projetos;
+e a chave estarangeira de projeto, já que projeto pertence ao funcionarios e um funcionario pode ter muitos projetos;
