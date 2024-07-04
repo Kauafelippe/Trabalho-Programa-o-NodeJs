@@ -28,6 +28,3 @@ cpf: String;
 email: String;
 
 e a chave estarangeira de projeto, já que projeto pertence ao funcionarios e um funcionario pode ter muitos projetos;
-
-![Captura de tela 2024-07-04 090429](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/f8f453f6-a611-4c35-8c75-372b0468c9b8)
-
