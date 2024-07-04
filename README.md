@@ -32,3 +32,24 @@ e a chave estarangeira de projeto, já que projeto pertence ao funcionarios e um
 **Para acessar no Insominia**
 ![Captura de tela 2024-07-04 090429](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/f8f453f6-a611-4c35-8c75-372b0468c9b8)
 
+![Captura de tela 2024-07-04 091311](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/8d9760c2-5417-442c-96d7-857f400caa56)
+
+![Captura de tela 2024-07-04 091452](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/f6561d93-83b8-423c-9fb4-08d049fc8d33)
+
+![Captura de tela 2024-07-04 091650](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/90571f7f-f841-4894-86cf-9873a12effc2)
+
+![Captura de tela 2024-07-04 092816](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/2d86bb75-3e66-42e9-9239-92b7078d8dd2)
+
+![Captura de tela 2024-07-04 093051](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/7824e0aa-b115-41f5-8c35-2c1f681bfa9f)
+
+![Captura de tela 2024-07-04 093150](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/674d7c7f-c37d-477a-9f34-2ff043fa4966)
+
+![Captura de tela 2024-07-04 093226](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/343eb521-a9a7-47ee-a5cf-cf5a3b9d07fd)
+
+![Captura de tela 2024-07-04 093414](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/87417b8d-7bbe-483d-bb6f-3b4ec2b47f11)
+
+![Captura de tela 2024-07-04 093541](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/4b17a79e-2fc7-4466-a19a-2198fe537574)
+
+![Captura de tela 2024-07-04 093626](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/6259bfde-2ea9-4041-8d7c-2c678f370d0d)
+
+![Captura de tela 2024-07-04 093715](https://github.com/Kauafelippe/Trabalho-Programa-o-NodeJs/assets/160186619/13667b59-44ed-4b01-8c0d-fc79e828fe11)
