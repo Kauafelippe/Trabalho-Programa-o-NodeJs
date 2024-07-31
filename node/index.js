@@ -29,9 +29,9 @@ app.get("/projetos/", async function (req, res) {
 })
 
 //Questão 2 - pegando funcionário pelo id
-app.get("/funcionarios/:id", async function (req, res) {
-    const funcionarioSelecionado = await funcionarios.funcionarios.findByPk(req.params.id,
-        { include: { model: projetos.projetos } }
+app.get("/funcionarios/:id", async function (req, res) {/*Define uma função assíncrona que será executada quando uma requisição for feita para esse get */
+    const funcionarioSelecionado = await funcionarios.funcionarios.findByPk/*metodo para procura por cheve primaria*/(req.params.id,
+        { include: { model: projetos.projetos } }/*diz para o sequelize mostrar em conjunto os projetos pertencentes aos funcionarios */
     )
     if (funcionarioSelecionado == null) {
         res.status(404).send({})
@@ -80,14 +80,14 @@ app.get("/projetos/nome/:nome", async function (req, res) {
 })
 
 //Questão 4 - adicionando nome ao funcionario
-app.post("/funcionarios/", async function (req, res) {
-    const resultado = await funcionarios.funcionarios.create({
-        nome: req.body.nome,
+app.post("/funcionarios/", async function (req, res) { /*Adicionar novos funcinarios a tabela */
+    const resultado = await funcionarios.funcionarios.create({ /*usa metodo create do sequelize para criar um novo registro na tabela */
+        nome: req.body.nome, /*é retirado do corpo (funcionarios.js) usando a requisição req.body */
         idade: req.body.idade,
         cpf:req.body.cpf,
         email:req.body.email
     })
-    res.send(resultado)
+    res.send(resultado/*contem os dados do funcionario */) /*envia o objeto funconario como resposta */
 })
 
 //adicionando nome do projeto
