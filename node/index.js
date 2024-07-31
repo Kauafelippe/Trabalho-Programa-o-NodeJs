@@ -69,8 +69,11 @@ app.get("/funcionarios/nome/:nome", async function (req, res) {
 
 //pegando o subconjunto de nomes dos projetos
 app.get("/projetos/nome/:nome", async function (req, res) {
-    const projetoSelecionada = await projetos.projetos.findByPk(req.params.nome,
-        { include: { model: funcionarios.funcionarios } }
+    const projetoSelecionada = await projetos.projetos.findAll(
+        {
+            include: { model: funcionarios.funcionarios },
+            where: { nome: req.params.nome }
+        }
     )
     if (projetoSelecionada == null) {
         res.status(404).send({})
@@ -84,8 +87,8 @@ app.post("/funcionarios/", async function (req, res) { /*Adicionar novos funcina
     const resultado = await funcionarios.funcionarios.create({ /*usa metodo create do sequelize para criar um novo registro na tabela */
         nome: req.body.nome, /*é retirado do corpo (funcionarios.js) usando a requisição req.body */
         idade: req.body.idade,
-        cpf:req.body.cpf,
-        email:req.body.email
+        cpf: req.body.cpf,
+        email: req.body.email
     })
     res.send(resultado/*contem os dados do funcionario */) /*envia o objeto funconario como resposta */
 })
@@ -94,9 +97,9 @@ app.post("/funcionarios/", async function (req, res) { /*Adicionar novos funcina
 app.post("/projetos/", async function (req, res) {
     const resultado = await projetos.projetos.create({
         nome: req.body.nome,
-        data:req.body.data,
-        descricao:req.body.descricao,
-        custo_projeto:req.body.custo_projeto,
+        data: req.body.data,
+        descricao: req.body.descricao,
+        custo_projeto: req.body.custo_projeto,
         funcionarioId: req.body.funcionarioId
 
     })
@@ -108,8 +111,8 @@ app.put("/funcionarios/:id", async function (req, res) {
     const resultado = await funcionarios.funcionarios.update({
         nome: req.body.nome,
         idade: req.body.idade,
-        cpf:req.body.cpf,
-        email:req.body.email
+        cpf: req.body.cpf,
+        email: req.body.email
     }, {
         where: { id: req.params.id }
     })
@@ -124,9 +127,9 @@ app.put("/funcionarios/:id", async function (req, res) {
 app.put("/projetos/:id", async function (req, res) {
     const resultado = await projetos.projetos.update({
         nome: req.body.nome,
-        data:req.body.data,
-        descricao:req.body.descricao,
-        custo_projeto:req.body.custo_projeto,
+        data: req.body.data,
+        descricao: req.body.descricao,
+        custo_projeto: req.body.custo_projeto,
         funcionarioId: req.body.funcionarioId
     }, {
         where: { id: req.params.id }
