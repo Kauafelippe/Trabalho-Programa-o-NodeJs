@@ -1,25 +1,23 @@
-const express = require('express')
+const express = require('express')//Importa o framework Express.js para criar o servidor web.(Cria a estrutura do servidor)
 const banco = require("./banco")
 const projetos = require("./projetos")
 const funcionarios = require("./funcionarios")
 
 const app = express()
-app.use(express.json())
+app.use(express.json())//Permite enviar e receber dados em formato JSON
 
 const PORTA = 3000
-app.listen(PORTA, function () {
-    console.log("Servidor iniciado na porta " + PORTA)
-})
-
-//conectando com o banco de dados
+//Estabelece a conexão e sincroniza as tabelas
 banco.conexao.sync(function () {
     console.log("Banco de dados conectado");
 })
+//É a base para criar uma aplicação web que pode armazenar e gerenciar dados em um banco de dados.
 
 //Questão 1 - pegar todos os funcionários
-app.get("/funcionarios/", async function (req, res) {
-    const resultado = await funcionarios.funcionarios.findAll()
+app.get("/funcionarios/", async function (req, res) {//async function-realiza consultas no bancos de dados, sem bloquear a execução do servidor.
+    const resultado = await funcionarios.funcionarios.findAll()//await-Pausa a execução da função até que a consulta ao banco de dados seja concluída.
     res.send(resultado);
+    //Envia os dados da consulta como resposta para quem fez a requisição.  
 })
 
 //pegar todos os projetos
@@ -56,12 +54,12 @@ app.get("/projetos/:id", async function (req, res) {
 app.get("/funcionarios/nome/:nome", async function (req, res) {
     const funcionarioSelecionado = await funcionarios.funcionarios.findAll(
         {
-            include: { model: projetos.projetos },
-            where: { nome: req.params.nome }
+            include: { model: projetos.projetos },//significa que a consulta irá retornar não apenas os dados do funcionário, mas também os dados dos projetos aos quais ele está relacionado.
+            where: { nome: req.params.nome }//filtra os resultados da consulta, buscando apenas os funcionários cujo nome corresponda ao valor passado na URL 
         }
     )
     if (funcionarioSelecionado == null) {
-        res.status(404).send({})
+        res.status(404).send({})//é enviado um status HTTP 404 (Not Found) e um objeto vazio como resposta.
     } else {
         res.send(funcionarioSelecionado);
     }
@@ -108,18 +106,20 @@ app.post("/projetos/", async function (req, res) {
 
 //Questão 5 - Editando um funcionário expecífico
 app.put("/funcionarios/:id", async function (req, res) {
+    //Objeto com os novos valores para os campos que serão atualizados. Os valores são obtidos do corpo da requisição 
     const resultado = await funcionarios.funcionarios.update({
         nome: req.body.nome,
         idade: req.body.idade,
         cpf: req.body.cpf,
         email: req.body.email
+
     }, {
-        where: { id: req.params.id }
+        where: { id: req.params.id }//Especifica a condição para a atualização, ou seja, apenas o registro com o ID correspondente ao parâmetro da URL será atualizado.
     })
     if (resultado == 0) {
         res.status(404).send({})
     } else {
-        res.send(await funcionarios.funcionarios.findByPk(req.params.id))
+        res.send(await funcionarios.funcionarios.findByPk(req.params.id))//Se a atualização foi bem-sucedida, busca novamente o funcionário atualizado no banco de dados e envia os dados atualizados como resposta.
     }
 })
 
@@ -130,7 +130,7 @@ app.put("/projetos/:id", async function (req, res) {
         data: req.body.data,
         descricao: req.body.descricao,
         custo_projeto: req.body.custo_projeto,
-        funcionarioId: req.body.funcionarioId
+        funcionarioId: req.body.funcionarioId//chave estrangeira de funcionarioa
     }, {
         where: { id: req.params.id }
     })

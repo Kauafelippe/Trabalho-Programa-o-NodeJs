@@ -14,7 +14,7 @@ var projetos = banco.conexao.define(
             allowNull: false
         },
         data: {
-            type: sequelize.DATEONLY,
+            type: sequelize.DATEONLY,//Isso significa que o campo armazenará apenas a data (ano, mês, dia), sem informações de hora.
             allowNull: false
         },
         descricao: {
