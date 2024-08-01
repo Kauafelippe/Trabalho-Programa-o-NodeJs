@@ -134,7 +134,7 @@ app.put("/projetos/:id", async function (req, res) {
         data: req.body.data,
         descricao: req.body.descricao,
         custo_projeto: req.body.custo_projeto,
-        funcionarioId: req.body.funcionarioId//chave estrangeira de funcionarioa
+        funcionarioId: req.body.funcionarioId//chave estrangeira de funcionario
     }, {
         where: { id: req.params.id }
     })
