@@ -1,4 +1,4 @@
-const sequelize = require("sequelize"); /*cria uma constante sequelize, importamnto a biblioteca sequelize comoparametro que é um ORM (Object-Relational Mapping))*/
+const sequelize = require("sequelize"); /*cria uma constante sequelize, importamnto a biblioteca sequelize como parametro que é um ORM (Object-Relational Mapping))*/
 require('dotenv').config() /*importa módulo dotenv e carrega as variáveis de ambiente de um arquivo .env para as processar. */
 
 const conexao = new sequelize( /*cria nova instancia com parametros. */
@@ -11,4 +11,4 @@ const conexao = new sequelize( /*cria nova instancia com parametros. */
     }
 )
 
-module.exports = { conexao } /*Exporta conexao para podrr ser usada em outras partes do codigo. */
+module.exports = { conexao } /*Exporta conexao para podre ser usada em outras partes do codigo. */
