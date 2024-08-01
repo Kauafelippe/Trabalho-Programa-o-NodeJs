@@ -7,6 +7,10 @@ const app = express()
 app.use(express.json())//Permite enviar e receber dados em formato JSON
 
 const PORTA = 3000
+app.listen(PORTA, function () {
+    console.log("Servidor iniciado na porta " + PORTA)
+})
+
 //Estabelece a conexão e sincroniza as tabelas
 banco.conexao.sync(function () {
     console.log("Banco de dados conectado");
